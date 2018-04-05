@@ -144,12 +144,12 @@ module Brcobranca
           doc.image boleto.logotipo_extra, x: 0.5, y: 28.6, zoom: 30 if boleto.logotipo_extra
 
           if boleto.linha_cabecalho1
-            doc.moveto x: "3 cm", y: "29.1 cm"
+            doc.moveto x: "2.7 cm", y: "29.1 cm"
             doc.text boleto.linha_cabecalho1
           end
 
           if boleto.linha_cabecalho2
-            doc.moveto x: "3 cm", y: "28.7 cm"
+            doc.moveto x: "2.7 cm", y: "28.7 cm"
             doc.text boleto.linha_cabecalho2
           end
 
