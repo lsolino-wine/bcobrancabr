@@ -140,6 +140,19 @@ module Brcobranca
           # Pontos iniciais em x e y
           @x = 0.50
           @y = 27.42
+
+          doc.image boleto.logotipo_extra, x: 0.5, y: 28.6, zoom: 30 if boleto.logotipo_extra
+
+          if boleto.linha_cabecalho1
+            doc.moveto x: "3 cm", y: "29.1 cm"
+            doc.text boleto.linha_cabecalho1
+          end
+
+          if boleto.linha_cabecalho2
+            doc.moveto x: "3 cm", y: "28.7 cm"
+            doc.text boleto.linha_cabecalho2
+          end
+
           # LOGOTIPO do BANCO
           doc.image boleto.logotipo, x: "#{@x} cm", y: "#{@y} cm"
           # Dados
