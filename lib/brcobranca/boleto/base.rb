@@ -94,7 +94,9 @@ module Brcobranca
       # <b>OPCIONAL</b>: Linha para texto acima do logo do banco
       attr_accessor :linha_cabecalho2
       # <b>OPCIONAL</b>: Path de uma imagem para exibir acima do logo do banco
-      attr_accessor :logotipo_extra
+      attr_accessor :logotipo_cabecalho
+      # <b>OPCIONAL</b>: linha digitável
+      attr_accessor :linha_digitavel
 
       # Validações
       validates_presence_of :agencia, :conta_corrente, :moeda, :especie_documento, :especie, :aceite, :nosso_numero, :sacado, :sacado_documento, message: 'não pode estar em branco.'

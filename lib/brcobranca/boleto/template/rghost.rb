@@ -141,7 +141,7 @@ module Brcobranca
           @x = 0.50
           @y = 27.42
 
-          doc.image boleto.logotipo_extra, x: 0.5, y: 28.6, zoom: 30 if boleto.logotipo_extra
+          doc.image boleto.logotipo_cabecalho, x: 0.5, y: 28.6, zoom: 30 if boleto.logotipo_cabecalho
 
           if boleto.linha_cabecalho1
             doc.moveto x: "2.7 cm", y: "29.1 cm"
@@ -160,7 +160,7 @@ module Brcobranca
           move_more(doc, 4.84, 0.02)
           doc.show "#{boleto.banco}-#{boleto.banco_dv}", tag: :maior
           move_more(doc, 2, 0)
-          doc.show boleto.codigo_barras.linha_digitavel, tag: :grande
+          doc.show exibe_linha_digitavel_para(boleto), tag: :grande
           move_more(doc, -6.5, -0.83)
 
           doc.show boleto.cedente
@@ -216,7 +216,7 @@ module Brcobranca
           doc.show "#{boleto.banco}-#{boleto.banco_dv}", tag: :maior
 
           move_more(doc, 2, 0)
-          doc.show boleto.codigo_barras.linha_digitavel, tag: :grande
+          doc.show exibe_linha_digitavel_para(boleto), tag: :grande
 
           move_more(doc, -6.5, -0.9)
           doc.show boleto.local_pagamento
@@ -304,6 +304,10 @@ module Brcobranca
             doc.show "#{boleto.avalista} - #{boleto.avalista_documento}"
           end
           # FIM Segunda parte do BOLETO
+        end
+
+        def exibe_linha_digitavel_para(boleto)
+          boleto.linha_digitavel || boleto.codigo_barras.linha_digitavel
         end
       end # Base
     end

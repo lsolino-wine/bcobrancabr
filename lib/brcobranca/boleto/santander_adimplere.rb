@@ -4,7 +4,7 @@ module Brcobranca
       attr_writer :codigo_barras
 
       def codigo_barras
-        instance_variable_get("@codigo_barras").remove(/\D/)
+        instance_variable_get("@codigo_barras").remove(/\D/) rescue nil
       end
 
       def logotipo
@@ -20,7 +20,7 @@ module Brcobranca
       validates_presence_of :convenio, message: 'não pode estar em branco.'
       validates_length_of :agencia, maximum: 4, message: 'deve ser menor ou igual a 4 dígitos.'
       validates_length_of :convenio, maximum: 7, message: 'deve ser menor ou igual a 7 dígitos.'
-      validates_length_of :nosso_numero, maximum: 7, message: 'deve ser menor ou igual a 7 dígitos.'
+      validates_length_of :nosso_numero, maximum: 8, message: 'deve ser menor ou igual a 8 dígitos.'
 
       def initialize(campos = {})
         campos = { carteira: '102' }.merge!(campos)
@@ -40,7 +40,7 @@ module Brcobranca
       end
 
       def nosso_numero=(valor)
-        @nosso_numero = valor.to_s.rjust(7, '0') if valor
+        @nosso_numero = valor.to_s.rjust(8, '0') if valor
       end
 
       def nosso_numero_dv
