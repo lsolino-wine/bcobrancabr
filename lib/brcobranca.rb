@@ -113,6 +113,7 @@ module Brcobranca
     autoload :Credisis,           'brcobranca/boleto/credisis'
     autoload :Cecred,             'brcobranca/boleto/cecred'
     autoload :SantanderAdimplere, 'brcobranca/boleto/santander_adimplere'
+    autoload :BradescoGRB,        'brcobranca/boleto/bradesco_grb'
 
     # Módulos para classes de template
     module Template
