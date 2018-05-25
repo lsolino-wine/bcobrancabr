@@ -2,9 +2,14 @@ module Brcobranca
   module Boleto
     class SantanderAdimplere < Base
       attr_writer :codigo_barras
+      attr_accessor :nosso_numero_dv
 
       def codigo_barras
         instance_variable_get("@codigo_barras").remove(/\D/) rescue nil
+      end
+
+      def nosso_numero_dv
+        instance_variable_get("@nosso_numero_dv").remove(/\D/) rescue nil
       end
 
       def logotipo
@@ -43,15 +48,12 @@ module Brcobranca
         @nosso_numero = valor.to_s.rjust(8, '0') if valor
       end
 
-      def nosso_numero_dv
-        nosso_numero.modulo11(
-          multiplicador: (2..9).to_a,
-          mapeamento: { 10 => 0, 11 => 0 }
-        ) { |total| 11 - (total % 11) }
-      end
-
       def nosso_numero_boleto
-        nosso_numero
+        if nosso_numero_dv
+          "#{nosso_numero}-#{nosso_numero_dv}"
+        else
+          nosso_numero
+        end
       end
 
       def agencia_conta_boleto
