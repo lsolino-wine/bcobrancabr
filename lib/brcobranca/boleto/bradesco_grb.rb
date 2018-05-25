@@ -3,10 +3,9 @@ module Brcobranca
     class BradescoGRB < Base
       attr_accessor :codigo_barras
       attr_accessor :nosso_numero_dv
-      attr_accessor :valor_documento
 
       def codigo_barras
-        instance_variable_get("@codigo_barras").remove(/\D/)
+        instance_variable_get("@codigo_barras").remove(/\D/) rescue nil
       end
 
       def nosso_numero_dv
@@ -40,16 +39,6 @@ module Brcobranca
       def banco
         '237'
       end
-
-      def especie_documento
-        'RC'
-      end
-
-      def aceite
-        'N'
-      end
-
-      def quantidade; end
 
       def carteira; end
 
