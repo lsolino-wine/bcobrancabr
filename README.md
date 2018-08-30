@@ -2,11 +2,8 @@
 
 Fork modificado do brcobranca.
 
-## Motivo do fork
+## Motivo do fork?
 
-Incluir os seguintes campos em todos os boletos:
+Permitir maior customização de boletos gerados.
 
-- linha_cabecalho1
-- linha_cabecalho2
-- logotipo_cabecalho
-- linha_digitavel
+Veja nosso [CHANGELOG.md](https://github.com/adimplere/bbrcobranca/blob/master/CHANGELOG.md) para mais informações
