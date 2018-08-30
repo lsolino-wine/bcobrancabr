@@ -7,9 +7,9 @@ require 'bbrcobranca/version'
 Gem::Specification.new do |gem|
   gem.name        = 'bbrcobranca'
   gem.version     = Bbrcobranca::VERSION
-  gem.authors = ['Kivanio Barbosa', 'Glauco Custódio']
-  gem.description = 'Gem para emissao de boletos de bancos brasileiros.'
-  gem.summary = 'Gem para gerar boletos/arquivos de remessa e ler arquivos de retorno de bancos brasileiros.'
+  gem.authors = ['Glauco Custódio']
+  gem.description = 'Gem para emitir/ler arquivos de boletos de bancos brasileiros.'
+  gem.summary = 'Gem para emitir/ler arquivos de boletos de bancos brasileiros.'
   gem.homepage = 'http://rubygems.org/gems/bbrcobranca'
   gem.files         = Dir['Rakefile', '{bin,lib,spec}/**/*', 'README*', 'LICENSE*', 'CHANGELOG*', 'History*'] & `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
