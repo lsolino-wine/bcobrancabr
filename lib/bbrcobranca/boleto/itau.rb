@@ -6,6 +6,7 @@ module Bbrcobranca
     class Itau < Base # Banco Itaú
       # Usado somente em carteiras especiais com registro para complementar o número do cocumento
       attr_reader :seu_numero
+      attr_writer :codigo_barras
 
       validates_length_of :agencia, maximum: 4, message: 'deve ser menor ou igual a 4 dígitos.'
       validates_length_of :convenio, maximum: 5, message: 'deve ser menor ou igual a 5 dígitos.'
@@ -19,6 +20,10 @@ module Bbrcobranca
       def initialize(campos = {})
         campos = { carteira: '175' }.merge!(campos)
         super(campos)
+      end
+
+      def codigo_barras
+        instance_variable_get("@codigo_barras") || super
       end
 
       # Codigo do banco emissor (3 dígitos sempre)

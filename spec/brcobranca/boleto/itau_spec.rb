@@ -58,6 +58,15 @@ RSpec.describe Bbrcobranca::Boleto::Itau do
     expect(boleto_novo.carteira).to eql('175')
   end
 
+  it 'usa codigo de barras dado' do
+    boleto = described_class.new(
+      @valid_attributes.merge(codigo_barras: '34191377000000135001750025828170810536789000')
+    )
+    expect(boleto.codigo_barras).to eq(
+      '34191377000000135001750025828170810536789000'
+    )
+  end
+
   it '#usa_seu_numero?' do
     @valid_attributes[:carteira] = 198
     boleto_novo = described_class.new(@valid_attributes)

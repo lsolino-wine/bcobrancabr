@@ -114,8 +114,6 @@ module Bbrcobranca
     autoload :Cecred,             'bbrcobranca/boleto/cecred'
     autoload :SantanderAdimplere, 'bbrcobranca/boleto/santander_adimplere'
     autoload :BradescoGRB,        'bbrcobranca/boleto/bradesco_grb'
-    autoload :ItauAdimplere, 'bbrcobranca/boleto/itau_adimplere'
-
 
     # Módulos para classes de template
     module Template
