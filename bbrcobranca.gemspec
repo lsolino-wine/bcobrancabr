@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.version     = Bbrcobranca::VERSION
   gem.authors = ['Kivanio Barbosa', 'Glauco Custódio']
   gem.description = 'Gem para emissao de boletos de bancos brasileiros.'
-  gem.summary = 'Gem que permite trabalhar com boletos de cobranca para bancos brasileiros.'
+  gem.summary = 'Gem para gerar boletos/arquivos de remessa e ler arquivos de retorno de bancos brasileiros.'
   gem.homepage = 'http://rubygems.org/gems/bbrcobranca'
   gem.files         = Dir['Rakefile', '{bin,lib,spec}/**/*', 'README*', 'LICENSE*', 'CHANGELOG*', 'History*'] & `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
