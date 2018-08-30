@@ -34,6 +34,17 @@ RSpec.describe Bbrcobranca::Boleto::Santander do
     expect(boleto_novo.carteira).to eql('102')
   end
 
+  it 'usa codigo de barras e nosso numero dv dados' do
+    boleto_novo = described_class.new(
+      @valid_attributes.merge(
+        codigo_barras: '03399511500000025009189977500000900002690102',
+        nosso_numero_dv: '8'
+      )
+    )
+    expect(boleto_novo.codigo_barras).to eql('03399511500000025009189977500000900002690102')
+    expect(boleto_novo.nosso_numero_boleto).to eql('9000026-8')
+  end
+
   it 'Criar nova instancia com atributos válidos' do
     boleto_novo = described_class.new(@valid_attributes)
     expect(boleto_novo.banco).to eql('033')

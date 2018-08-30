@@ -5,6 +5,8 @@
 module Bbrcobranca
   module Boleto
     class Santander < Base # Banco Santander
+      attr_writer :codigo_barras, :nosso_numero_dv
+
       validates_presence_of :convenio, message: 'não pode estar em branco.'
       validates_length_of :agencia, maximum: 4, message: 'deve ser menor ou igual a 4 dígitos.'
       validates_length_of :convenio, maximum: 7, message: 'deve ser menor ou igual a 7 dígitos.'
@@ -15,6 +17,21 @@ module Bbrcobranca
       def initialize(campos = {})
         campos = { carteira: '102' }.merge!(campos)
         super(campos)
+      end
+
+      def codigo_barras
+        instance_variable_get("@codigo_barras") || super
+      end
+
+      def nosso_numero_dv
+        if instance_variable_get("@nosso_numero_dv")
+          instance_variable_get("@nosso_numero_dv").gsub(/\D/, '')
+        else
+          nosso_numero.modulo11(
+            multiplicador: (2..9).to_a,
+            mapeamento: { 10 => 0, 11 => 0 }
+          ) { |total| 11 - (total % 11) }
+        end
       end
 
       # Codigo do banco emissor (3 dígitos sempre)
@@ -41,15 +58,6 @@ module Bbrcobranca
       # @return [String] 7 caracteres numéricos.
       def nosso_numero=(valor)
         @nosso_numero = valor.to_s.rjust(7, '0') if valor
-      end
-
-      # Dígito verificador do nosso número.
-      # @return [String] 1 caracteres numéricos.
-      def nosso_numero_dv
-        nosso_numero.modulo11(
-          multiplicador: (2..9).to_a,
-          mapeamento: { 10 => 0, 11 => 0 }
-        ) { |total| 11 - (total % 11) }
       end
 
       # Nosso número para exibir no boleto.
