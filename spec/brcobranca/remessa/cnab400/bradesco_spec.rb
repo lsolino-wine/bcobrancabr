@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab400::Bradesco do
+RSpec.describe Bbrcobranca::Remessa::Cnab400::Bradesco do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
       data_vencimento: Date.current,
       codigo_multa: '2',
       percentual_multa: '2.00',

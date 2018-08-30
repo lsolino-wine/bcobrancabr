@@ -12,7 +12,7 @@ require 'rspec'
 require 'timecop'
 require 'pry'
 require 'tempfile'
-require 'brcobranca'
+require 'bbrcobranca'
 require 'rghost'
 
 # Requires supporting files with custom matchers and macros, etc,

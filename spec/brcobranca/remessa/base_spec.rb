@@ -3,9 +3,9 @@
 
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Base do
+RSpec.describe Bbrcobranca::Remessa::Base do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
                                        data_vencimento: Date.current,
                                        nosso_numero: 123,
                                        documento_sacado: '12345678901',
@@ -51,7 +51,7 @@ RSpec.describe Brcobranca::Remessa::Base do
       end
 
       it 'deve ser invalido se um objeto da colecao for invalido' do
-        objeto = subject.class.new(params.merge!(pagamentos: [Brcobranca::Remessa::Pagamento.new]))
+        objeto = subject.class.new(params.merge!(pagamentos: [Bbrcobranca::Remessa::Pagamento.new]))
         expect(objeto.invalid?).to be true
       end
     end

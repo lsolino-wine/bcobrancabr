@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 shared_examples_for 'cnab400' do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
       data_vencimento: Date.current,
       nosso_numero: 123,
       documento_sacado: '12345678901',
@@ -14,7 +14,7 @@ shared_examples_for 'cnab400' do
       uf_sacado: 'SP')
   end
   let(:params) do
-    if subject.class == Brcobranca::Remessa::Cnab400::Bradesco
+    if subject.class == Bbrcobranca::Remessa::Cnab400::Bradesco
       { carteira: '01',
         agencia: '12345',
         conta_corrente: '1234567',
@@ -23,7 +23,7 @@ shared_examples_for 'cnab400' do
         sequencial_remessa: '1',
         codigo_empresa: '123',
         pagamentos: [pagamento] }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::Citibank
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::Citibank
       {
         portfolio: '17777751042700080112',
         carteira: '1',
@@ -31,7 +31,7 @@ shared_examples_for 'cnab400' do
         documento_cedente: '12345678910',
         pagamentos: [pagamento]
       }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::Santander
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::Santander
       {
         codigo_transmissao: '17777751042700080112',
         empresa_mae: 'SOCIEDADE BRASILEIRA DE ZOOLOGIA LTDA',
@@ -41,7 +41,7 @@ shared_examples_for 'cnab400' do
         digito_conta: '8',
         pagamentos: [pagamento]
       }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::Sicoob
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::Sicoob
       { carteira: '01',
         agencia: '1234',
         conta_corrente: '12345678',
@@ -50,7 +50,7 @@ shared_examples_for 'cnab400' do
         documento_cedente: '12345678910',
         convenio: '123456789',
         pagamentos: [pagamento] }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::BancoBrasil
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::BancoBrasil
       { carteira: '12',
         agencia: '1234',
         variacao_carteira: '123',
@@ -61,7 +61,7 @@ shared_examples_for 'cnab400' do
         documento_cedente: '12345678910',
         sequencial_remessa: '1',
         pagamentos: [pagamento] }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::BancoNordeste
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::BancoNordeste
       {
         carteira: '21',
         agencia: '1234',
@@ -71,7 +71,7 @@ shared_examples_for 'cnab400' do
         documento_cedente: '12345678910',
         pagamentos: [pagamento]
       }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::Unicred
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::Unicred
       {
         carteira: '03',
         agencia: '1234',
@@ -82,7 +82,7 @@ shared_examples_for 'cnab400' do
         codigo_transmissao: '12345678901234567890',
         pagamentos: [pagamento]
       }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::Credisis
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::Credisis
       {
         carteira: '18',
         agencia: '1234',
@@ -93,7 +93,7 @@ shared_examples_for 'cnab400' do
         documento_cedente: '12345678910',
         pagamentos: [pagamento]
       }
-    elsif subject.class == Brcobranca::Remessa::Cnab400::Banrisul
+    elsif subject.class == Bbrcobranca::Remessa::Cnab400::Banrisul
       {
         carteira: '1',
         agencia: '1102',
@@ -120,7 +120,7 @@ shared_examples_for 'cnab400' do
   end
 
   it 'detalhe deve falhar se pagamento nao for valido' do
-    expect { objeto.monta_detalhe(Brcobranca::Remessa::Pagamento.new, 1) }.to raise_error(Brcobranca::RemessaInvalida)
+    expect { objeto.monta_detalhe(Bbrcobranca::Remessa::Pagamento.new, 1) }.to raise_error(Bbrcobranca::RemessaInvalida)
   end
 
   it 'detalhe deve ter 400 posicoes' do
@@ -136,15 +136,15 @@ shared_examples_for 'cnab400' do
       trailer = objeto.monta_trailer 3
       expect(trailer[0]).to eq '9'                       # identificacao registro
 
-      if subject.class == Brcobranca::Remessa::Cnab400::Banrisul
+      if subject.class == Bbrcobranca::Remessa::Cnab400::Banrisul
         expect(trailer[1..26]).to eq ''.rjust(26, ' ')      # brancos
         expect(trailer[27..39]).to eq '0000000019990'       # total geral
         expect(trailer[40..393]).to eq ''.rjust(354, ' ')   # brancos
-      elsif subject.class == Brcobranca::Remessa::Cnab400::Santander
+      elsif subject.class == Bbrcobranca::Remessa::Cnab400::Santander
         expect(trailer[1..6]).to eq '000003'                # numero sequencial do registro
         expect(trailer[7..19]).to eq '0000000019990'        # total
         expect(trailer[20..393]).to eq ''.rjust(374, '0')   # zeros
-      elsif subject.class == Brcobranca::Remessa::Cnab400::Sicoob
+      elsif subject.class == Bbrcobranca::Remessa::Cnab400::Sicoob
         expect(trailer[1..393]).to eq ''.rjust(393, '0')   # zeros
       else
         expect(trailer[1..393]).to eq ''.rjust(393, ' ')   # brancos
@@ -155,7 +155,7 @@ shared_examples_for 'cnab400' do
   end
 
   it 'montagem da remessa deve falhar se o objeto nao for valido' do
-    expect { subject.class.new.gera_arquivo }.to raise_error(Brcobranca::RemessaInvalida)
+    expect { subject.class.new.gera_arquivo }.to raise_error(Bbrcobranca::RemessaInvalida)
   end
 
   it 'remessa deve conter os registros mais as quebras de linha' do

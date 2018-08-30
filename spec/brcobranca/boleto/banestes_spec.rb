@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Boleto::Banestes do #:nodoc:[all]
+RSpec.describe Bbrcobranca::Boleto::Banestes do #:nodoc:[all]
   let(:valid_attributes) do
     {
       data_vencimento: Date.parse('2015-06-26'),
@@ -64,7 +64,7 @@ RSpec.describe Brcobranca::Boleto::Banestes do #:nodoc:[all]
 
   it 'Não permitir gerar boleto com atributos inválido' do
     boleto_novo = described_class.new
-    expect { boleto_novo.codigo_barras }.to raise_error(Brcobranca::BoletoInvalido)
+    expect { boleto_novo.codigo_barras }.to raise_error(Bbrcobranca::BoletoInvalido)
     expect(boleto_novo.errors.count).to be(6)
   end
 

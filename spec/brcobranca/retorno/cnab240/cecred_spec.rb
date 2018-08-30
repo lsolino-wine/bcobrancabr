@@ -1,4 +1,4 @@
-RSpec.describe Brcobranca::Retorno::Cnab240::Cecred do
+RSpec.describe Bbrcobranca::Retorno::Cnab240::Cecred do
   before do
     @arquivo = File.join(File.dirname(__FILE__), '..', '..', '..', 'arquivos', 'CNAB240CECRED.RET')
   end

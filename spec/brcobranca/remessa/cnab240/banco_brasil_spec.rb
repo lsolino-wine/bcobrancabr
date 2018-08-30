@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab240::BancoBrasil do
+RSpec.describe Bbrcobranca::Remessa::Cnab240::BancoBrasil do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
       data_vencimento: Date.current,
       nosso_numero: 123,
       documento: 6969,
@@ -156,7 +156,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::BancoBrasil do
     context 'formatacao nosso numero' do
       it 'deve falhar se convenio nao for implementado' do
         banco_brasil.convenio = '12345'
-        expect { banco_brasil.formata_nosso_numero(1) }.to raise_error(Brcobranca::NaoImplementado)
+        expect { banco_brasil.formata_nosso_numero(1) }.to raise_error(Bbrcobranca::NaoImplementado)
       end
 
       it 'formata o nosso numero quando o convenio tiver 4 posicoes' do

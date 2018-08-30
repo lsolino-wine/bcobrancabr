@@ -2,7 +2,7 @@
 #
 require 'spec_helper'
 
-RSpec.describe Brcobranca::CalculoData do
+RSpec.describe Bbrcobranca::CalculoData do
   it 'Calcula o fator de vencimento' do
     expect((Date.parse '2008-02-01').fator_vencimento).to eq('3769')
     expect((Date.parse '2008-02-02').fator_vencimento).to eq('3770')

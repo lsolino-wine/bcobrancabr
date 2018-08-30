@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab400::BancoBrasilia do
+RSpec.describe Bbrcobranca::Remessa::Cnab400::BancoBrasilia do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
       data_vencimento: Date.current,
       nosso_numero: 123,
       documento: 6969,
@@ -157,7 +157,7 @@ RSpec.describe Brcobranca::Remessa::Cnab400::BancoBrasilia do
     end
 
     it 'montagem da remessa deve falhar se o objeto nao for valido' do
-      expect { subject.class.new.gera_arquivo }.to raise_error(Brcobranca::RemessaInvalida)
+      expect { subject.class.new.gera_arquivo }.to raise_error(Bbrcobranca::RemessaInvalida)
     end
 
     it 'remessa deve conter os registros mais as quebras de linha' do

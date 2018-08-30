@@ -2,7 +2,7 @@
 #
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Currency::String do
+RSpec.describe Bbrcobranca::Currency::String do
   it 'returns true if value seted is a valid ruby number' do
     expect('1234'.numeric?).to be_truthy
     expect('123.4'.numeric?).to be_truthy
@@ -54,7 +54,7 @@ RSpec.describe Brcobranca::Currency::String do
   end
 end
 
-RSpec.describe Brcobranca::Currency::Number do
+RSpec.describe Bbrcobranca::Currency::Number do
   it 'converts value seted to currency value' do
     expect(1234.to_currency).to eql('1.234,00')
     expect(123.4.to_currency).to eql('123,40')

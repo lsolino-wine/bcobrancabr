@@ -3,9 +3,9 @@
 
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab400::Sicoob do
+RSpec.describe Bbrcobranca::Remessa::Cnab400::Sicoob do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
                                        data_vencimento: Date.current,
                                        nosso_numero: 123,
                                        documento_sacado: '12345678901',

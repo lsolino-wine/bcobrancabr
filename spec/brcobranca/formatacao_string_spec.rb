@@ -2,7 +2,7 @@
 #
 require 'spec_helper'
 
-RSpec.describe Brcobranca::FormatacaoString do
+RSpec.describe Bbrcobranca::FormatacaoString do
   context 'no arguments' do
     it { expect { ''.format_size }.to raise_error(ArgumentError) }
   end

@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab240::SicoobBancoBrasil do
+RSpec.describe Bbrcobranca::Remessa::Cnab240::SicoobBancoBrasil do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(
+    Bbrcobranca::Remessa::Pagamento.new(
       valor: 50.0,
       data_vencimento: Date.current,
       nosso_numero: '1234567',
@@ -243,7 +243,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::SicoobBancoBrasil do
 
   context 'gera arquivo' do
     it 'deve falhar se o sicoob_banco_brasil for invalido' do
-      expect { subject.class.new.gera_arquivo }.to raise_error(Brcobranca::RemessaInvalida)
+      expect { subject.class.new.gera_arquivo }.to raise_error(Bbrcobranca::RemessaInvalida)
     end
 
     it 'remessa deve conter os registros mais as quebras de linha' do

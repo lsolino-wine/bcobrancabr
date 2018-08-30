@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab400::Banrisul do
+RSpec.describe Bbrcobranca::Remessa::Cnab400::Banrisul do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
       data_vencimento: Date.current,
       nosso_numero: 22832563,
       documento: '1',

@@ -2,7 +2,7 @@
 #
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Formatacao do
+RSpec.describe Bbrcobranca::Formatacao do
   it 'Formata o CPF' do
     expect(98_789_298_790.to_br_cpf).to eql('987.892.987-90')
     expect('98789298790'.to_br_cpf).to eql('987.892.987-90')

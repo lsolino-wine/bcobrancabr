@@ -2,7 +2,7 @@
 #
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Boleto::Base do
+RSpec.describe Bbrcobranca::Boleto::Base do
   before do
     @valid_attributes = {
       especie_documento: 'DM',
@@ -142,9 +142,9 @@ RSpec.describe Brcobranca::Boleto::Base do
 
   it 'Mostrar aviso sobre sobrecarga de métodos padrões' do
     boleto_novo = described_class.new(@valid_attributes)
-    expect { boleto_novo.codigo_barras_segunda_parte }.to raise_error(Brcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
-    expect { boleto_novo.nosso_numero_boleto }.to raise_error(Brcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
-    expect { boleto_novo.agencia_conta_boleto }.to raise_error(Brcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
+    expect { boleto_novo.codigo_barras_segunda_parte }.to raise_error(Bbrcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
+    expect { boleto_novo.nosso_numero_boleto }.to raise_error(Bbrcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
+    expect { boleto_novo.agencia_conta_boleto }.to raise_error(Bbrcobranca::NaoImplementado, 'Sobreescreva este método na classe referente ao banco que você esta criando')
   end
 
   it 'Incluir módulos de template na classe' do

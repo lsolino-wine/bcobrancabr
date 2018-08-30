@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Boleto::Hsbc do
+RSpec.describe Bbrcobranca::Boleto::Hsbc do
   before do
     @valid_attributes = {
       valor: 0.0,
@@ -83,7 +83,7 @@ RSpec.describe Brcobranca::Boleto::Hsbc do
 
   it 'Não permitir gerar boleto com atributos inválido' do
     boleto_novo = described_class.new
-    expect { boleto_novo.codigo_barras }.to raise_error(Brcobranca::BoletoInvalido)
+    expect { boleto_novo.codigo_barras }.to raise_error(Bbrcobranca::BoletoInvalido)
     expect(boleto_novo.errors.count).to be(5)
   end
 
@@ -114,7 +114,7 @@ RSpec.describe Brcobranca::Boleto::Hsbc do
     @valid_attributes[:conta_corrente] = '351202'
     boleto_novo = described_class.new(@valid_attributes)
 
-    expect { boleto_novo.nosso_numero_boleto }.to raise_error(Brcobranca::BoletoInvalido)
+    expect { boleto_novo.nosso_numero_boleto }.to raise_error(Bbrcobranca::BoletoInvalido)
   end
 
   it 'Montar agencia_conta_boleto' do

@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
+RSpec.describe Bbrcobranca::Remessa::Cnab240::Sicoob do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(
+    Bbrcobranca::Remessa::Pagamento.new(
       valor: 50.0,
       data_vencimento: Date.current,
       nosso_numero: '429715',

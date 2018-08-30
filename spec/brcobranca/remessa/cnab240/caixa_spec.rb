@@ -1,12 +1,12 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Remessa::Cnab240::Caixa do
+RSpec.describe Bbrcobranca::Remessa::Cnab240::Caixa do
   before { Timecop.freeze(Time.local(2015, 7, 14, 16, 15, 15)) }
   after { Timecop.return }
 
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
       data_vencimento: Date.current,
       nosso_numero: 123,
       numero: 123,

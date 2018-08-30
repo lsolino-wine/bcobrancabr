@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 shared_examples_for 'cnab240' do
   let(:pagamento) do
-    Brcobranca::Remessa::Pagamento.new(valor: 199.9,
+    Bbrcobranca::Remessa::Pagamento.new(valor: 199.9,
       data_vencimento: Date.current,
       nosso_numero: 123,
       documento_sacado: '12345678901',
@@ -30,17 +30,17 @@ shared_examples_for 'cnab240' do
       mensagem_2: 'Campo destinado ao preenchimento no momento do pagamento.',
       pagamentos: [pagamento]
     }
-    if subject.class == Brcobranca::Remessa::Cnab240::Caixa
+    if subject.class == Bbrcobranca::Remessa::Cnab240::Caixa
       p.merge!(versao_aplicativo: '1234',
         digito_agencia: '1')
-    elsif subject.class == Brcobranca::Remessa::Cnab240::BancoBrasil
+    elsif subject.class == Bbrcobranca::Remessa::Cnab240::BancoBrasil
       p.merge!(carteira: '12',
         variacao: '123')
-    elsif subject.class == Brcobranca::Remessa::Cnab240::Sicredi
+    elsif subject.class == Bbrcobranca::Remessa::Cnab240::Sicredi
       p.merge!(byte_idt: '2', posto: '14', digito_conta: '5')
-    elsif subject.class == Brcobranca::Remessa::Cnab240::Unicred
+    elsif subject.class == Bbrcobranca::Remessa::Cnab240::Unicred
       p.merge!(byte_idt: '2', posto: '14', digito_conta: '5')
-    elsif subject.class == Brcobranca::Remessa::Cnab240::Cecred
+    elsif subject.class == Bbrcobranca::Remessa::Cnab240::Cecred
       pagamento.codigo_multa = '2'
       pagamento.percentual_multa =  2.00
       p.merge!(digito_agencia: '1', pagamentos: [pagamento])
@@ -241,7 +241,7 @@ shared_examples_for 'cnab240' do
 
   context 'gera arquivo' do
     it 'deve falhar se o objeto for invalido' do
-      expect { subject.class.new.gera_arquivo }.to raise_error(Brcobranca::RemessaInvalida)
+      expect { subject.class.new.gera_arquivo }.to raise_error(Bbrcobranca::RemessaInvalida)
     end
 
     it 'remessa deve conter os registros mais as quebras de linha' do

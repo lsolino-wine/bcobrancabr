@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Retorno::RetornoCnab400 do
+RSpec.describe Bbrcobranca::Retorno::RetornoCnab400 do
   before do
     @arquivo = File.join(File.dirname(__FILE__), '..', '..', 'arquivos', 'CNAB400.RET')
   end

@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Boleto::Sicredi do
+RSpec.describe Bbrcobranca::Boleto::Sicredi do
   let(:valid_attributes) do
     {
       data_processamento: Date.parse('2016-08-22'),
@@ -121,7 +121,7 @@ RSpec.describe Brcobranca::Boleto::Sicredi do
 
   it 'Não permitir gerar boleto com atributos inválido' do
     boleto_novo = described_class.new
-    expect { boleto_novo.codigo_barras }.to raise_error(Brcobranca::BoletoInvalido)
+    expect { boleto_novo.codigo_barras }.to raise_error(Bbrcobranca::BoletoInvalido)
     expect(boleto_novo.errors.count).to be(6)
   end
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Retorno::Cnab240::Santander do
+RSpec.describe Bbrcobranca::Retorno::Cnab240::Santander do
   before do
     @arquivo = File.join(File.dirname(__FILE__), '..', '..', '..', 'arquivos', 'CNAB240SANTANDER.RET')
   end

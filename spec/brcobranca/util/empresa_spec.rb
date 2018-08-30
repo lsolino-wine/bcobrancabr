@@ -3,7 +3,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Util::Empresa do
+RSpec.describe Bbrcobranca::Util::Empresa do
   context 'com zero' do
     it 'CPF returns 01' do
       ['179.461.278-55', '17946127855', 17_946_127_855].each do |documento|

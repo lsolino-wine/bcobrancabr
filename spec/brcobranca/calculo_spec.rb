@@ -2,7 +2,7 @@
 #
 require 'spec_helper'
 
-RSpec.describe Brcobranca::Calculo do
+RSpec.describe Bbrcobranca::Calculo do
   it 'Calcula módulo 10' do
     expect { ''.modulo10 }.to raise_error(ArgumentError)
     expect { ' '.modulo10 }.to raise_error(ArgumentError)
