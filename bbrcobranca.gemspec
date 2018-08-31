@@ -10,13 +10,11 @@ Gem::Specification.new do |gem|
   gem.authors = ['Glauco Custódio']
   gem.description = 'Gem para emitir/ler arquivos de boletos de bancos brasileiros.'
   gem.summary = 'Gem para emitir/ler arquivos de boletos de bancos brasileiros.'
-  gem.homepage = 'http://rubygems.org/gems/bbrcobranca'
+  gem.homepage = 'https://github.com/adimplere/bbrcobranca'
   gem.files         = Dir['Rakefile', '{bin,lib,spec}/**/*', 'README*', 'LICENSE*', 'CHANGELOG*', 'History*'] & `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
-
-  gem.requirements = ['GhostScript > 9.0, para gear PDF e código de Barras']
 
   gem.required_ruby_version = '>= 1.9'
 
