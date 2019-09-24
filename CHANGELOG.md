@@ -1,5 +1,10 @@
 # Change Log
 
+
+## 0.0.2 (24/09/2019)
+
+- Adiciona campo `carteira_label` e sua lógica de uso no rghost que realiza o print de informações no template dos boletos
+
 ## 0.0.2 (30/08/2018)
 
 - Adiciona campo `codigo_barras` para gerador de boleto Itau
