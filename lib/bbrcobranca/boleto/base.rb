@@ -42,6 +42,8 @@ module Bbrcobranca
       attr_accessor :documento_cedente
       # <b>OPCIONAL</b>: Número sequencial utilizado para identificar o boleto
       attr_accessor :nosso_numero
+      # <b>OPCIONAL</b>: Número sequencial utilizado para identificar o boleto + Convenio
+      attr_accessor :our_number
       # <b>REQUERIDO</b>: Símbolo da moeda utilizada (R$ no brasil)
       attr_accessor :especie
       # <b>REQUERIDO</b>: Tipo do documento (Geralmente DM que quer dizer Duplicata Mercantil)
@@ -99,8 +101,8 @@ module Bbrcobranca
       attr_accessor :linha_digitavel
 
       # Validações
-      validates_presence_of :agencia, :conta_corrente, :moeda, :especie_documento, :especie, :aceite, :nosso_numero, :sacado, :sacado_documento, message: 'não pode estar em branco.'
-      validates_numericality_of :convenio, :agencia, :conta_corrente, :nosso_numero, message: 'não é um número.', allow_nil: true
+      validates_presence_of :agencia, :conta_corrente, :moeda, :especie_documento, :especie, :aceite, :nosso_numero, :our_number, :sacado, :sacado_documento, message: 'não pode estar em branco.'
+      validates_numericality_of :convenio, message: 'não é um número.', allow_nil: true
 
       # Nova instancia da classe Base
       # @param [Hash] campos

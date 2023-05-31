@@ -3,7 +3,7 @@
 module Bbrcobranca
   module Boleto
     class BancoBrasil < Base # Banco do Brasil
-      validates_length_of :agencia, maximum: 4, message: 'deve ser menor ou igual a 4 dígitos.'
+      validates_length_of :agencia, maximum: 6, message: 'deve ser menor ou igual a 6 dígitos.'
       validates_length_of :conta_corrente, maximum: 8, message: 'deve ser menor ou igual a 8 dígitos.'
       validates_length_of :carteira, maximum: 2, message: 'deve ser menor ou igual a 2 dígitos.'
       validates_length_of :convenio, in: 4..8, message: 'não existente para este banco.'
@@ -119,7 +119,8 @@ module Bbrcobranca
       # @example
       #  boleto.nosso_numero_boleto #=> "12387989000004042-4"
       def nosso_numero_boleto
-        "#{convenio}#{nosso_numero}"
+        #"#{convenio}#{nosso_numero}"
+        "#{our_number}"
       end
 
       # Agência + conta corrente do cliente para exibir no boleto.
