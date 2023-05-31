@@ -24,6 +24,7 @@ module Bbrcobranca
         extend self
         include RGhost unless include?(RGhost)
         RGhost::Config::GS[:external_encoding] = Bbrcobranca.configuration.external_encoding
+        RGhost::Config::GS[:default_params] << '-dNOSAFER'
 
         # Gera o boleto em usando o formato desejado [:pdf, :jpg, :tif, :png, :ps, :laserjet, ... etc]
         #

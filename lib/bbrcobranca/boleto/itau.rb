@@ -18,7 +18,7 @@ module Bbrcobranca
       # Nova instancia do Itau
       # @param (see Bbrcobranca::Boleto::Base#initialize)
       def initialize(campos = {})
-        campos = { carteira: '175' }.merge!(campos)
+        campos = { carteira: '109' }.merge!(campos)
         super(campos)
       end
 
@@ -88,7 +88,8 @@ module Bbrcobranca
       # @example
       #  boleto.nosso_numero_boleto #=> "175/12345678-4"
       def nosso_numero_boleto
-        "#{carteira}/#{nosso_numero}-#{nosso_numero_dv}"
+        #"#{carteira}/#{nosso_numero}-#{nosso_numero_dv}"
+        "#{our_number}"
       end
 
       # Agência + conta corrente do cliente para exibir no boleto.
