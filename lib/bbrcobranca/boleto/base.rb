@@ -210,21 +210,29 @@ module Bbrcobranca
       # @return [String] código de barras formado por 44 caracteres numéricos.
       def codigo_barras
         raise Bbrcobranca::BoletoInvalido, self unless valid?
-        codigo = codigo_barras_primeira_parte # 18 digitos
-        codigo << codigo_barras_segunda_parte # 25 digitos
-        if codigo =~ /^(\d{4})(\d{39})$/
+        linha = linha_digitavel.gsub(/[^0-9A-Za-z]/, '')
+        meu_codigo = linha[0..3]
+        meu_codigo << linha[32..46]
+        meu_codigo << linha[4..8]
+        meu_codigo << linha[10..15]
+        meu_codigo << linha[16..19]
+        meu_codigo << linha[21..30]
+        meu_codigo
+        # codigo = codigo_barras_primeira_parte # 18 digitos
+        # codigo << codigo_barras_segunda_parte # 25 digitos
+        # if codigo =~ /^(\d{4})(\d{39})$/
 
-          codigo_dv = codigo.modulo11(
-            multiplicador: (2..9).to_a,
-            mapeamento: { 0 => 1, 10 => 1, 11 => 1 }
-          ) { |t| 11 - (t % 11) }
+        #   codigo_dv = codigo.modulo11(
+        #     multiplicador: (2..9).to_a,
+        #     mapeamento: { 0 => 1, 10 => 1, 11 => 1 }
+        #   ) { |t| 11 - (t % 11) }
 
-          codigo = "#{Regexp.last_match[1]}#{codigo_dv}#{Regexp.last_match[2]}"
-          codigo
-        else
-          self.errors.add(:base, :too_long, message: "tamanho(#{codigo.size}) prévio do código de barras(#{codigo}) inválido, deveria ser 43 dígitos")
-          raise Bbrcobranca::BoletoInvalido, self
-        end
+        #   codigo = "#{Regexp.last_match[1]}#{codigo_dv}#{Regexp.last_match[2]}"
+        #   codigo
+        # else
+        #   self.errors.add(:base, :too_long, message: "tamanho(#{codigo.size}) prévio do código de barras(#{codigo}) inválido, deveria ser 43 dígitos")
+        #   raise Bbrcobranca::BoletoInvalido, self
+        # end
       end
 
       # Monta a segunda parte do código de barras, que é específico para cada banco.
